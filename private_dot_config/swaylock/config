@@ -1,0 +1,43 @@
+image=~/Pictures/wallpaper.png
+scaling=fill
+
+inside-color=282828dd
+line-color=282828ff
+ring-color=b8bb26ff
+text-color=ebdbb2ff
+
+key-hl-color=98971aff
+separator-color=282828ff
+bs-hl-color=cc241dff
+
+# Typing indicator normal
+inside-clear-color=282828dd
+line-clear-color=282828ff
+ring-clear-color=d79921ff
+text-clear-color=ebdbb2ff
+
+# Keyboard layout text box
+layout-bg-color=282828ff
+layout-border-color=282828ff
+layout-text-color=ebdbb2ff
+
+# Verifying
+inside-ver-color=282828dd
+line-ver-color=282828ff
+ring-ver-color=d79921ff
+text-ver-color=ebdbb2ff
+
+# Wrong password
+inside-wrong-color=282828dd
+line-wrong-color=282828ff
+ring-wrong-color=fb4934ff
+text-wrong-color=ebdbb2ff
+
+# Caps lock (TODO)
+inside-caps-lock-color=282828dd
+line-caps-lock-color=282828ff
+ring-caps-lock-color=0000ffff
+text-caps-lock-color=0000ffff
+caps-lock-bs-hl-color=ff00ffff
+caps-lock-key-hl-color=ff00ffff
+

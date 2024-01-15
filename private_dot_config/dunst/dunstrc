@@ -1,0 +1,55 @@
+# vim:ft=cfg
+
+# https://dunst-project.org/documentation/
+
+[global]
+    font = "Monospace 10" #TODO
+    allow_markup = yes
+    format = "<b>%s %p</b>\n%b"
+    sort = yes
+    indicate_hidden = true
+    idle_threshold = 0
+    width  = 400
+    height = 100
+    offset = 20x20
+    gap_size = 5
+    frame_width = 2
+    separator_height = 2
+    alignment = left
+    show_age_threshold = 10
+    sticky_history = yes
+    follow = mouse
+    word_wrap = yes
+    padding = 15
+    horizontal_padding = 15
+    separator_color = #00ff00
+    startup_notification = false
+    dmenu = "/usr/bin/dmenu -p dunst: -nb #FFFFFF -nf #000000 -sb #94DBFF -sf #000000"
+    browser = "/usr/bin/chromium"
+
+
+# TODO
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+grave
+    context = ctrl+shift+period
+
+[urgency_low]
+    background  = "#282828" # BG
+    foreground  = "#a89984" # white1
+    frame_color = "#ebdbb2" # FG
+    timeout = 10
+
+[urgency_normal]
+    background  = "#282828" # BG
+    foreground  = "#ebdbb2" # FG
+    frame_color = "#b8bb26" # green2
+    timeout = 15
+
+[urgency_critical]
+    background  = "#282828" # BG
+    foreground  = "#fb4934" # red2
+    frame_color = "#fb4934" # green2
+    timeout = 0
+

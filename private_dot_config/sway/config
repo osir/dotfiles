@@ -1,0 +1,207 @@
+# ==============================================================================
+# VARIABLES
+# ==============================================================================
+
+set $term     kitty
+set $browser  firefox
+set $mod      Mod4
+
+# Workspace names
+set $wspace1  "1:Ⅰ"
+set $wspace2  "2:Ⅱ"
+set $wspace3  "3:Ⅲ"
+set $wspace4  "4:Ⅳ"
+set $wspace5  "5:Ⅴ"
+set $wspace6  "6:Ⅵ"
+set $wspace7  "7:Ⅶ"
+set $wspace8  "8:Ⅷ"
+set $wspace9  "9:Ⅸ"
+set $wspace10 "10:Ⅹ"
+
+# Colors
+set $bg     #282828
+set $fg     #ebdbb2
+set $green1 #98971a
+set $green2 #b8bb26
+set $red1   #cc241d
+set $cyan2  #8ec07c
+
+# ==============================================================================
+# OTHER SETTINGS
+# ==============================================================================
+
+floating_modifier       $mod normal # LMB = dragging, RMB = resizing
+focus_follows_mouse     no
+default_border          pixel 1
+default_floating_border pixel 1
+hide_edge_borders       smart
+font                    pango:Cantarell 18px
+
+# class                 border   backgr.  text     indicator  child_border
+client.focused          $green1  $green1  $bg      $green2    $green1
+client.unfocused        $bg      $bg      $green1  $bg        $bg
+client.focused_inactive $bg      $bg      $green2  $bg        $bg
+client.urgent           $red1    $bg      $red1    $bg        $bg
+client.background $cyan2
+
+# ==============================================================================
+# SPECIAL WINDOWS
+# ==============================================================================
+
+bindsym $mod+Shift+grave move scratchpad
+bindsym $mod+grave scratchpad show
+
+# TODO test
+exec $term
+exec "swaymsg move scratchpad"
+
+# Show Me The Keys
+for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
+    floating enable
+    sticky enable
+}
+
+# Assign specifig windows
+assign [class="Gimp"] Gimp
+assign [class="Audacity"] Audacity
+assign [class="^VirtualBox Manager$"] VirtualBox
+assign [class="^VirtualBox Machine$"] VirtualBox
+set $customws 'VirtualBox,Gimp,Audacity'
+
+
+# ==============================================================================
+# BAR
+# ==============================================================================
+
+bar {
+    position top
+    #strip_workspace_numbers yes
+    swaybar_command waybar
+}
+
+# ==============================================================================
+# KEYS
+# ==============================================================================
+
+# Meta
+bindsym $mod+Shift+c      reload
+bindsym $mod+Shift+r      restart
+bindsym $mod+x            exec loginctl lock-session
+
+# Programs
+bindsym $mod+d            exec $term
+bindsym $mod+Shift+d      exec $browser
+bindsym $mod+Shift+e      exec swaynag -t warning -m 'Quit Wayland session?' -B 'YES' 'swaymsg exit'
+bindsym $mod+Space        exec rofi -terminal $term -show drun
+bindsym $mod+Shift+Space  exec rofi -terminal $term -show run
+
+# Screenshots
+bindsym $mod+p            exec "grim -t png ~/screenshots/$(date '+%Y-%m-%dT%H:%M:%S').png && notify-send -a sway -u low -t 1000 -i '/usr/share/icons/Papirus-Dark/22x22/devices/camera-photo.svg' 'Screenshot' 'Screenshot saved: '$(date '+%Y-%m-%dT%H:%M:%S.png')"
+bindsym $mod+Shift+p      exec "slurp | grim -g - - | wl-copy                              && notify-send -a sway -u low -t 1000 -i '/usr/share/icons/Papirus-Dark/22x22/devices/camera-photo.svg' 'Screenshot' 'Screenshot copied.'"
+
+bindsym $mod+Period       exec "~/bin/unicode-menu/unicode-menu.sh"
+
+# Notifications
+bindsym $mod+Backspace    exec "dunstctl close"
+bindsym $mod+Shift+Backspace exec "dunstctl history-pop"
+
+# Window manipulation
+bindsym $mod+Shift+q      kill
+bindsym $mod+b            split h
+bindsym $mod+v            split v
+bindsym $mod+Return       focus mode_toggle # Focus last floating
+bindsym $mod+Shift+Return floating toggle
+
+# Layout
+bindsym $mod+f            fullscreen toggle
+bindsym $mod+q            layout toggle split
+bindsym $mod+w            layout tabbed
+bindsym $mod+e            layout stacking
+bindsym $mod+a            focus parent
+
+bindsym $mod+Left         resize shrink width  1 px or 1 ppt
+bindsym $mod+Down         resize grow   height 1 px or 1 ppt
+bindsym $mod+Up           resize shrink height 1 px or 1 ppt
+bindsym $mod+Right        resize grow   width  1 px or 1 ppt
+
+bindsym $mod+Shift+Left   resize shrink width  10 px or 10 ppt
+bindsym $mod+Shift+Down   resize grow   height 10 px or 10 ppt
+bindsym $mod+Shift+Up     resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+Right  resize grow   width  10 px or 10 ppt
+
+# Window movement
+bindsym $mod+h            focus left
+bindsym $mod+j            focus down
+bindsym $mod+k            focus up
+bindsym $mod+l            focus right
+
+bindsym $mod+Shift+h      move left
+bindsym $mod+Shift+j      move down
+bindsym $mod+Shift+k      move up
+bindsym $mod+Shift+l      move right
+
+# Workspaces
+bindsym $mod+s            exec "~/.config/sway/scripts/wschange.sh switch $customws"
+bindsym $mod+Shift+s      exec "~/.config/sway/scripts/wschange.sh move $customws"
+
+# Prior / Next = PgUp / PgDn
+bindsym $mod+Prior        workspace prev_on_output
+bindsym $mod+Next         workspace next_on_output
+
+bindsym $mod+1            workspace $wspace1
+bindsym $mod+2            workspace $wspace2
+bindsym $mod+3            workspace $wspace3
+bindsym $mod+4            workspace $wspace4
+bindsym $mod+5            workspace $wspace5
+bindsym $mod+6            workspace $wspace6
+bindsym $mod+7            workspace $wspace7
+bindsym $mod+8            workspace $wspace8
+bindsym $mod+9            workspace $wspace9
+bindsym $mod+0            workspace $wspace10
+
+bindsym $mod+Shift+1      move container to workspace $wspace1
+bindsym $mod+Shift+2      move container to workspace $wspace2
+bindsym $mod+Shift+3      move container to workspace $wspace3
+bindsym $mod+Shift+4      move container to workspace $wspace4
+bindsym $mod+Shift+5      move container to workspace $wspace5
+bindsym $mod+Shift+6      move container to workspace $wspace6
+bindsym $mod+Shift+7      move container to workspace $wspace7
+bindsym $mod+Shift+8      move container to workspace $wspace8
+bindsym $mod+Shift+9      move container to workspace $wspace9
+bindsym $mod+Shift+0      move container to workspace $wspace10
+
+# ==============================================================================
+# INPUT / OUTPUT
+# ==============================================================================
+
+input * {
+    xkb_layout "us"
+    xkb_options "ctrl:nocaps,compose:PrtSc"
+    repeat_delay 300
+    repeat_rate 50
+}
+
+output * bg ~/Pictures/wallpaper.png fill
+output eDP-1    resolution 2560x1440      scale 1
+output HDMI-A-1 resolution 3840x2160@30Hz scale 2
+
+# Screen timeout variables read by /usr/share/sway/config.d/90-swayidle.conf
+# TODO sike doesn't work gottem
+set $lock_timeout   900
+set $screen_timeout 45
+
+# ==============================================================================
+# AUTOSTART PROGRAMS
+# ==============================================================================
+
+# TODO
+exec_always gsettings set org.gnome.desktop.interface gtk-theme Gruvbox-Dark-BL
+exec_always gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
+#exec_always gsettings set org.gnome.desktop.interface cursor-theme Hacked-White
+
+# ==============================================================================
+# INCLUDES
+# ==============================================================================
+
+include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+
