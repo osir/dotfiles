@@ -2,7 +2,7 @@
 
 chosen=$(grep -h -v '^#' ~/bin/unicode-menu/{favorites,emoji}.csv | rofi -dmenu -p copy -i -l 20)
 
-[ "$chosen" != '' ] || exit 42
+[ "$chosen" != '' ] || exit 0
 
 c=$(echo "$chosen" | sed 's/ .*$//')
 printf "$c" | wl-copy --primary
