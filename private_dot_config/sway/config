@@ -86,12 +86,12 @@ bar {
 # Meta
 bindsym $mod+Shift+c      reload
 bindsym $mod+Shift+r      restart
+bindsym $mod+Shift+e      exec wlogout
 bindsym $mod+x            exec loginctl lock-session
 
 # Programs
 bindsym $mod+d            exec $term
 bindsym $mod+Shift+d      exec $browser
-bindsym $mod+Shift+e      exec swaynag -t warning -m 'Quit Wayland session?' -B 'YES' 'swaymsg exit'
 bindsym $mod+Space        exec rofi -terminal $term -show drun
 bindsym $mod+Shift+Space  exec rofi -terminal $term -show run
 
