@@ -6,6 +6,11 @@ set $term     kitty
 set $browser  firefox
 set $mod      Mod4
 
+# Screen timeout variables read by /usr/share/sway/config.d/90-swayidle.conf
+# TODO sike doesn't work gottem
+set $lock_timeout   900
+set $screen_timeout 45
+
 # Workspace names
 set $wspace1  "1:Ⅰ"
 set $wspace2  "2:Ⅱ"
@@ -51,17 +56,13 @@ client.background $cyan2
 bindsym $mod+Shift+grave move scratchpad
 bindsym $mod+grave scratchpad show
 
-# TODO test
-exec $term
-exec "swaymsg move scratchpad"
-
 # Show Me The Keys
 for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
     floating enable
     sticky enable
 }
 
-# Assign specifig windows
+# Assign specifig windows to Workspaces
 assign [class="Gimp"] Gimp
 assign [class="Audacity"] Audacity
 assign [class="^VirtualBox Manager$"] VirtualBox
@@ -185,19 +186,14 @@ output * bg ~/Pictures/wallpaper.png fill
 output eDP-1    resolution 2560x1440      scale 1
 output HDMI-A-1 resolution 3840x2160@30Hz scale 2
 
-# Screen timeout variables read by /usr/share/sway/config.d/90-swayidle.conf
-# TODO sike doesn't work gottem
-set $lock_timeout   900
-set $screen_timeout 45
-
 # ==============================================================================
 # AUTOSTART PROGRAMS
 # ==============================================================================
 
-# TODO
 exec_always gsettings set org.gnome.desktop.interface gtk-theme Gruvbox-Dark-BL
 exec_always gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
-#exec_always gsettings set org.gnome.desktop.interface cursor-theme Hacked-White
+
+exec $term
 
 # ==============================================================================
 # INCLUDES
