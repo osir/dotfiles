@@ -69,6 +69,8 @@ assign [class="^VirtualBox Manager$"] VirtualBox
 assign [class="^VirtualBox Machine$"] VirtualBox
 set $customws 'VirtualBox,Gimp,Audacity'
 
+# Mark windows running under XWayland as such
+for_window [shell="xwayland"] title_format "[XW] %title"
 
 # ==============================================================================
 # BAR
@@ -177,7 +179,8 @@ bindsym $mod+Shift+0      move container to workspace $wspace10
 
 input * {
     xkb_layout "us"
-    xkb_options "ctrl:nocaps,compose:PrtSc"
+    xkb_options "ctrl:nocaps,compose:prsc"
+    xkb_numlock enabled
     repeat_delay 300
     repeat_rate 50
 }
@@ -186,14 +189,15 @@ output * bg ~/Pictures/wallpaper.png fill
 output eDP-1    resolution 2560x1440      scale 1
 output HDMI-A-1 resolution 3840x2160@30Hz scale 2
 
+#seat seat0 xcursor_theme Adwaita
+
 # ==============================================================================
 # AUTOSTART PROGRAMS
 # ==============================================================================
 
 exec_always gsettings set org.gnome.desktop.interface gtk-theme Gruvbox-Dark-BL
 exec_always gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
-
-exec $term
+#exec_always gsettings set org.gnome.desktop.interface cursor-theme Adwaita
 
 # ==============================================================================
 # INCLUDES
