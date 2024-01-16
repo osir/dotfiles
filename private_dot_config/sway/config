@@ -195,9 +195,11 @@ output HDMI-A-1 resolution 3840x2160@30Hz scale 2
 # AUTOSTART PROGRAMS
 # ==============================================================================
 
+exec sleep 3 && flameshot
+
 exec_always gsettings set org.gnome.desktop.interface gtk-theme Gruvbox-Dark-BL
 exec_always gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
-#exec_always gsettings set org.gnome.desktop.interface cursor-theme Adwaita
+exec_always gsettings set org.gnome.desktop.interface cursor-theme Adwaita
 
 # ==============================================================================
 # INCLUDES
