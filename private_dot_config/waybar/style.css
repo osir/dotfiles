@@ -1,0 +1,160 @@
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* The whole bar */
+#waybar {
+    background: #282828; /* BG */
+    color: #ebdbb2; /* FG */
+    /*
+    font-family: "Cantarell";
+    font-family: Cantarell, Noto Sans, "Font Awesome 6 Free", "Font Awesome 5 Free", "Font Awesome 6 Free Solid", "Font Awesome 5 Free Solid";
+    font-family: "Font Awesome 5 Free Solid";
+    */
+    font-family: "Cantarell", "Font Awesome 6 Free Solid";
+    font-size: 18px;
+}
+
+/* left */
+#mode,
+#scratchpad,
+#media,
+#window,
+/* middle */
+#clock.clock_time,
+/* right */
+#idle_inhibitor,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#keyboard-state,
+#language,
+#battery,
+#clock.clock_date,
+#tray {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.warning.discharging {
+    color: orange;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#clock.clock_time {
+    font-weight: bold;
+}
+
+#cpu.warning {
+    color: #fabd2f; /* yellow2 */
+}
+
+#cpu.critical {
+    color: #fb4934; /* red2 */
+}
+
+#memory {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#memory.warning {
+    color: #fabd2f; /* yellow2 */
+}
+
+#memory.critical {
+    color: #fb4934; /* red2 */
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#mode {
+    background: #458588; /* blue1 */
+    border-top: 2px solid #ebdbb2; /* FG */
+    padding-bottom: 2px; /* Compensate for the top border */
+}
+
+#temperature.critical {
+    color: #fb4934; /* red2 */
+}
+
+#tray { }
+
+#window { }
+
+#scratchpad {
+    color: #ebdbb2; /* FG */
+}
+
+#workspaces button {
+    color: #ebdbb2; /* FG */
+    /*padding-left: 8px;
+    padding-right: 8px;
+    TODO: why tf does the GTK theme interfere and add padding here?
+    */
+}
+
+#workspaces button.focused {
+    background: #b8bb26; /* green2 */
+    color: #282828; /* bg */
+}
+
+#workspaces button.urgent {
+    color: #fb4934; /* red2 */
+}
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+/* TODO */
+@keyframes blink-warning {
+    70% {
+        color: white;
+    }
+
+    to {
+        color: white;
+        background-color: orange;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+        color: white;
+    }
+
+    to {
+        color: white;
+        background-color: red;
+    }
+}
+
