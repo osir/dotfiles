@@ -1,0 +1,16 @@
+configuration {
+    font: "mono 16";
+    show-icons: true;
+    terminal: "kitty";
+}
+
+@theme "gruvbox-dark"
+
+* {
+    scrollbar: false;
+}
+
+window {
+    width: 35%;
+}
+
