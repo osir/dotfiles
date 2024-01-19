@@ -1,5 +1,5 @@
 configuration {
-    font: "mono 10";
+    font: "mono 12";
     show-icons: true;
     terminal: "kitty";
 }

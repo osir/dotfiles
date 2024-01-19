@@ -40,7 +40,7 @@ focus_follows_mouse     no
 default_border          pixel 1
 default_floating_border pixel 1
 hide_edge_borders       smart
-font                    pango:Cantarell 18px
+font                    pango:Cantarell 12px
 
 # class                 border   backgr.  text     indicator  child_border
 client.focused          $green1  $green1  $bg      $green2    $green1
@@ -186,6 +186,7 @@ input * {
 }
 
 output * bg ~/Pictures/wallpaper.png fill
+output eDP-1 scale 1
 #output eDP-1    resolution 2560x1440      scale 1
 #output HDMI-A-1 resolution 3840x2160@30Hz scale 2
 
