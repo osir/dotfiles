@@ -52,7 +52,7 @@
         "on-click": "dunstctl set-paused toggle",
         "format": "{}",
         "tooltip": false,
-        "interval": 10
+        "interval": 1
     },
     "idle_inhibitor": {
         "format": "{icon}",
