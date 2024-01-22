@@ -16,6 +16,7 @@
         "clock#clock_time",
     ],
     "modules-right": [
+        "custom/message_inhibitor",
         "idle_inhibitor",
         "pulseaudio",
         "network",
@@ -24,7 +25,7 @@
         "temperature",
         "backlight",
         "keyboard-state",
-        "sway/language",
+        //"sway/language",
         "battery",
         "clock#clock_date",
         "tray"
@@ -45,6 +46,13 @@
         "format-icons": ["", ""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
+    },
+    "custom/message_inhibitor":{
+        "exec": "if dunstctl is-paused | grep -sq true - ; then printf ''; else printf ''; fi",
+        "on-click": "dunstctl set-paused toggle",
+        "format": "{}",
+        "tooltip": false,
+        "interval": 10
     },
     "idle_inhibitor": {
         "format": "{icon}",
