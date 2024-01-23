@@ -63,11 +63,10 @@ for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The
 }
 
 # Assign specifig windows to Workspaces
-assign [class="Gimp"] Gimp
-assign [class="Audacity"] Audacity
-assign [class="^VirtualBox Manager$"] VirtualBox
-assign [class="^VirtualBox Machine$"] VirtualBox
-set $customws 'VirtualBox,Gimp,Audacity'
+assign [class="^VirtualBox Manager$"] VB
+assign [class="^VirtualBox Machine$"] VB
+assign [appid="org.keepasscx.KeePassXC"] PW
+set $customws 'VirtualBox,PW'
 
 # Mark windows running under XWayland as such
 for_window [shell="xwayland"] title_format "[XW] %title"
