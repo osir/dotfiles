@@ -66,7 +66,7 @@ for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The
 assign [class="^VirtualBox Manager$"] VB
 assign [class="^VirtualBox Machine$"] VB
 assign [app_id="org.keepasscx.KeePassXC"] PW
-set $customws 'VirtualBox,PW'
+set $customws 'VB,PW'
 
 # Mark windows running under XWayland as such
 for_window [shell="xwayland"] title_format "[XW] %title"
