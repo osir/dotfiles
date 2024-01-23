@@ -143,6 +143,9 @@ bindsym $mod+Shift+k      move up
 bindsym $mod+Shift+l      move right
 
 # Workspaces
+bindsym $mod+Home         move workspace to output left
+bindsym $mod+End          move workspace to output right
+
 bindsym $mod+s            exec "~/.config/sway/scripts/wschange.sh switch $customws"
 bindsym $mod+Shift+s      exec "~/.config/sway/scripts/wschange.sh move $customws"
 
