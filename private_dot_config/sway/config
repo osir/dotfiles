@@ -56,6 +56,9 @@ client.background $cyan2
 bindsym $mod+Shift+grave move scratchpad
 bindsym $mod+grave scratchpad show
 
+# Mark windows running under XWayland as such
+for_window [shell="xwayland"] title_format "[XW] %title"
+
 # Show Me The Keys
 for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
     floating enable
@@ -66,10 +69,10 @@ for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The
 assign [class="^VirtualBox Manager$"] VB
 assign [class="^VirtualBox Machine$"] VB
 assign [app_id="org.keepasscx.KeePassXC"] PW
-set $customws 'VB,PW'
-
-# Mark windows running under XWayland as such
-for_window [shell="xwayland"] title_format "[XW] %title"
+assign [class="Pidgin"] COM
+assign [app_id="info.mumble.Mumble"] COM
+assign [class="thunderbird"] Mail
+set $customws 'VB,PW,COM,Mail'
 
 # ==============================================================================
 # BAR
