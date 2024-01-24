@@ -26,17 +26,18 @@ zstyle ':completion::complete:*' gain-privileges 1
 # ==============================================================================
 # ALIASES
 # ==============================================================================
-alias  r=ranger
-alias  v=nvim
-alias se=sudoedit
-alias  l="\ls -lh  --color=auto --group-directories-first"
-alias ll="\ls -lAh --color=auto --group-directories-first"
+alias    v='nvim'
+alias   se='sudoedit'
+alias    r='source ranger'
+alias    l='\ls -lh  --color=auto --group-directories-first'
+alias   ll='\ls -lAh --color=auto --group-directories-first'
+alias sudi='sudo -i'
 
 # TODO: Default programs
 export  BROWSER='/usr/bin/qutebrowser'
 export   VISUAL='/usr/bin/nvim'
 export   EDITOR='/usr/bin/nvim'
-export    PAGER=''
+export    PAGER='less'
 export     LANG='en_US.UTF-8'
 
 # TODO: XDG variables
