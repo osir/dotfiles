@@ -16,6 +16,7 @@
         "clock#clock_time",
     ],
     "modules-right": [
+        "custom/cursor_autohide",
         "custom/message_inhibitor",
         "idle_inhibitor",
         "pulseaudio",
@@ -47,18 +48,25 @@
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
+    "custom/cursor_autohide":{
+        "exec": "~/.config/sway/scripts/cursor-autohide.sh is-enabled",
+        "on-click": "~/.config/sway/scripts/cursor-autohide.sh toggle 3000",
+        "format": " {} ",
+        "tooltip": false,
+        "interval": 1
+    },
     "custom/message_inhibitor":{
         "exec": "if dunstctl is-paused | grep -sq true - ; then printf ''; else printf ''; fi",
         "on-click": "dunstctl set-paused toggle",
-        "format": "{}",
+        "format": " {} ",
         "tooltip": false,
         "interval": 1
     },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": ""
         }
     },
     "tray": {
@@ -72,7 +80,7 @@
     },
     "clock#clock_date": {
         "interval": 10,
-        "format": "{:%Y-%m-%d}",
+        "format": " {:%W  %Y-%m-%d}",
         "locale": "en_US",
         "timezone": "Europe/Zurich",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
