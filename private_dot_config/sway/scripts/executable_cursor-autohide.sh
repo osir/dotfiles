@@ -1,5 +1,4 @@
 #!/bin/sh
-set -x
 
 F='/tmp/cursor-autohide'
 TIMEOUT_MS=3000
