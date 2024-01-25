@@ -59,6 +59,9 @@ bindsym $mod+grave scratchpad show
 # Mark windows running under XWayland as such
 for_window [shell="xwayland"] title_format "[XW] %title"
 
+# To ensure that Flameshot is correctly positioned on multiple outputs
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+
 # Show Me The Keys
 for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
     floating enable
