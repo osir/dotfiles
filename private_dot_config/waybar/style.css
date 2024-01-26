@@ -97,9 +97,10 @@
 }
 
 #mode {
-    background: #458588; /* blue1 */
-    border-top: 2px solid #ebdbb2; /* FG */
-    padding-bottom: 2px; /* Compensate for the top border */
+    color: #282828;
+    background: #ebdbb2;
+    font-weight: bold;
+    font-style: normal;
 }
 
 #temperature.critical {

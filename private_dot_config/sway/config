@@ -103,10 +103,6 @@ bindsym $mod+Shift+d      exec $browser
 bindsym $mod+Space        exec rofi -terminal $term -show drun
 bindsym $mod+Shift+Space  exec rofi -terminal $term -show run
 
-# Screenshots
-bindsym $mod+p            exec "grim -t png ~/screenshots/$(date '+%Y-%m-%dT%H:%M:%S').png && notify-send -a sway -u low -t 1000 -i '/usr/share/icons/Papirus-Dark/22x22/devices/camera-photo.svg' 'Screenshot' 'Screenshot saved: '$(date '+%Y-%m-%dT%H:%M:%S.png')"
-bindsym $mod+Shift+p      exec "slurp | grim -g - - | wl-copy                              && notify-send -a sway -u low -t 1000 -i '/usr/share/icons/Papirus-Dark/22x22/devices/camera-photo.svg' 'Screenshot' 'Screenshot copied.'"
-
 bindsym $mod+Period       exec "~/bin/unicode-menu/unicode-menu.sh"
 
 # Notifications
@@ -180,6 +176,30 @@ bindsym $mod+Shift+7      move container to workspace $wspace7
 bindsym $mod+Shift+8      move container to workspace $wspace8
 bindsym $mod+Shift+9      move container to workspace $wspace9
 bindsym $mod+Shift+0      move container to workspace $wspace10
+
+# ==============================================================================
+# SCREENSHOTS
+# ==============================================================================
+
+set $gs grimshot --notify
+set $dt $(date +%Y-%m-%dT%H:%M:%S)
+set $mode_scr Screenshot ❶Area ❷Window ❸Screen ❹All
+mode "$mode_scr" {
+    bindsym 1 exec '$gs copy area',   mode "default"
+    bindsym 2 exec '$gs copy active', mode "default"
+    bindsym 3 exec '$gs copy output', mode "default"
+    bindsym 4 exec '$gs copy screen', mode "default"
+
+    bindsym q exec '$gs save area ~/screenshots/$dt-area.png',  mode "default"
+    bindsym w exec '$gs save active ~/screenshots/$dt-win.png', mode "default"
+    bindsym e exec '$gs save output ~/screenshots/$dt-scr.png', mode "default"
+    bindsym r exec '$gs save screen ~/screenshots/$dt-all.png', mode "default"
+
+    bindsym Escape mode "default"
+}
+bindsym $mod+p       mode "$mode_scr"
+bindsym $mod+Shift+p exec '$gs save screen ~/screenshots/$dt-area.png', mode "default"
+
 
 # ==============================================================================
 # INPUT / OUTPUT
