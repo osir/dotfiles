@@ -12,16 +12,16 @@ set $lock_timeout   900
 set $screen_timeout 45
 
 # Workspace names
-set $wspace1  "1:Ⅰ"
-set $wspace2  "2:Ⅱ"
-set $wspace3  "3:Ⅲ"
-set $wspace4  "4:Ⅳ"
-set $wspace5  "5:Ⅴ"
-set $wspace6  "6:Ⅵ"
-set $wspace7  "7:Ⅶ"
-set $wspace8  "8:Ⅷ"
-set $wspace9  "9:Ⅸ"
-set $wspace10 "10:Ⅹ"
+set $wspace1  "1:一"
+set $wspace2  "2:二"
+set $wspace3  "3:三"
+set $wspace4  "4:四"
+set $wspace5  "5:五"
+set $wspace6  "6:六"
+set $wspace7  "7:七"
+set $wspace8  "8:八"
+set $wspace9  "9:九"
+set $wspace10 "10:十"
 
 # Colors
 set $bg     #282828
@@ -54,18 +54,31 @@ client.background $cyan2
 # ==============================================================================
 
 bindsym $mod+Shift+grave move scratchpad
-bindsym $mod+grave scratchpad show
+bindsym $mod+grave       scratchpad show
 
 # Mark windows running under XWayland as such
 for_window [shell="xwayland"] title_format "[XW] %title"
 
 # To ensure that Flameshot is correctly positioned on multiple outputs
-for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+for_window [app_id="flameshot"] {
+    border pixel 0
+    floating enable
+    fullscreen disable
+    move absolute position 0 0
+}
 
-# Show Me The Keys
+# Show Me The Keys TODO: broken
 for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
     floating enable
     sticky enable
+}
+
+for_window [app_id="at.yrlf.wl_mirror"] {
+    fullscreen enable
+}
+
+for_window [app_id="filepicker"] {
+    floating enable
 }
 
 # Assign specifig windows to Workspaces
@@ -75,7 +88,8 @@ assign [app_id="org.keepasscx.KeePassXC"] PW
 assign [class="Pidgin"] COM
 assign [app_id="info.mumble.Mumble"] COM
 assign [class="thunderbird"] Mail
-set $customws 'VB,PW,COM,Mail'
+assign [app_id="at.yrlf.wl_mirror"] Mirror
+set $customws 'VB,PW,COM,Mail,Mirror'
 
 # ==============================================================================
 # BAR
@@ -83,7 +97,6 @@ set $customws 'VB,PW,COM,Mail'
 
 bar {
     position top
-    #strip_workspace_numbers yes
     swaybar_command waybar
 }
 
@@ -123,6 +136,7 @@ bindsym $mod+w            layout tabbed
 bindsym $mod+e            layout stacking
 bindsym $mod+a            focus parent
 
+# Window resizing
 bindsym $mod+Left         resize shrink width  1 px or 1 ppt
 bindsym $mod+Down         resize grow   height 1 px or 1 ppt
 bindsym $mod+Up           resize shrink height 1 px or 1 ppt
@@ -144,12 +158,16 @@ bindsym $mod+Shift+j      move down
 bindsym $mod+Shift+k      move up
 bindsym $mod+Shift+l      move right
 
+# Screen mirror and zoom
+bindsym $mod+z            exec 'wl-mirror --show-cursor --region "$(slurp)"', workspace Mirror, move workspace Mirror to output right;
+bindsym $mod+Shift+z      exec 'wl-mirror --show-cursor eDP-1', workspace Mirror, move workspace Mirror to output right;
+
 # Workspaces
 bindsym $mod+Home         move workspace to output left
 bindsym $mod+End          move workspace to output right
 
 bindsym $mod+s            exec "~/.config/sway/scripts/wschange.sh switch $customws"
-bindsym $mod+Shift+s      exec "~/.config/sway/scripts/wschange.sh move $customws"
+bindsym $mod+Shift+s      exec "~/.config/sway/scripts/wschange.sh move   $customws"
 
 # Prior / Next = PgUp / PgDn
 bindsym $mod+Prior        workspace prev_on_output
@@ -181,25 +199,26 @@ bindsym $mod+Shift+0      move container to workspace $wspace10
 # SCREENSHOTS
 # ==============================================================================
 
+set $scr_dir $( cat ~/.screenshot-dir )
 set $gs grimshot --notify
 set $dt $(date +%Y-%m-%dT%H:%M:%S)
-set $mode_scr Screenshot ❶Area ❷Window ❸Screen ❹All
+set $mode_scr Screenshot ❶Area ❷Window ❸Screen ❹All ↹Dir
 mode "$mode_scr" {
     bindsym 1 exec '$gs copy area',   mode "default"
     bindsym 2 exec '$gs copy active', mode "default"
     bindsym 3 exec '$gs copy output', mode "default"
     bindsym 4 exec '$gs copy screen', mode "default"
 
-    bindsym q exec '$gs save area ~/screenshots/$dt-area.png',  mode "default"
-    bindsym w exec '$gs save active ~/screenshots/$dt-win.png', mode "default"
-    bindsym e exec '$gs save output ~/screenshots/$dt-scr.png', mode "default"
-    bindsym r exec '$gs save screen ~/screenshots/$dt-all.png', mode "default"
+    bindsym q exec '$gs save area   $scr_dir/$dt-area.png', mode "default"
+    bindsym w exec '$gs save active $scr_dir/$dt-win.png',  mode "default"
+    bindsym e exec '$gs save output $scr_dir/$dt-scr.png',  mode "default"
+    bindsym r exec '$gs save screen $scr_dir/$dt-all.png',  mode "default"
 
+    bindsym Tab mode "default", exec $term --class filepicker ranger --choosedir=.screenshot-dir --show-only-dirs "$( cat .screenshot-dir )"
     bindsym Escape mode "default"
 }
 bindsym $mod+p       mode "$mode_scr"
 bindsym $mod+Shift+p exec '$gs save screen ~/screenshots/$dt-area.png', mode "default"
-
 
 # ==============================================================================
 # INPUT / OUTPUT
@@ -213,10 +232,8 @@ input * {
     repeat_rate 50
 }
 
-output * bg ~/Pictures/wallpaper.png fill
+output *     bg ~/Pictures/wallpaper.png fill
 output eDP-1 scale 1
-#output eDP-1    resolution 2560x1440      scale 1
-#output HDMI-A-1 resolution 3840x2160@30Hz scale 2
 
 #seat seat0 xcursor_theme Adwaita
 
@@ -224,10 +241,11 @@ output eDP-1 scale 1
 # AUTOSTART PROGRAMS
 # ==============================================================================
 
+# Sleep required to make sure the tray is ready
 exec sleep 3 && flameshot
 
-exec_always gsettings set org.gnome.desktop.interface gtk-theme Gruvbox-Dark-BL
-exec_always gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
+exec_always gsettings set org.gnome.desktop.interface gtk-theme    Gruvbox-Dark-BL
+exec_always gsettings set org.gnome.desktop.interface icon-theme   Papirus-Dark
 exec_always gsettings set org.gnome.desktop.interface cursor-theme Adwaita
 
 # ==============================================================================

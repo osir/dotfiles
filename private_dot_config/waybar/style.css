@@ -117,10 +117,8 @@
 
 #workspaces button {
     color: #ebdbb2; /* FG */
-    /*padding-left: 8px;
-    padding-right: 8px;
-    TODO: why tf does the GTK theme interfere and add padding here?
-    */
+    padding-left: 0;
+    padding-right: 0;
 }
 
 #workspaces button.focused {
