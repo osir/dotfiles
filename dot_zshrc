@@ -1,7 +1,7 @@
 # ==============================================================================
 # ZSH SETTINGS
 # ==============================================================================
-bindkey -v
+#bindkey -v
 
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -44,7 +44,7 @@ export     LANG='en_US.UTF-8'
 
 # PATH Variable
 typeset -U path PATH
-path=(~/bin $path)
+path=(~/bin ~/.local/bin $path)
 export PATH
 
 
