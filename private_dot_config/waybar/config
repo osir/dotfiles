@@ -55,11 +55,11 @@
         "on-click-right": "~/bin/chezmoi apply && swaymsg reload",
         "format": "{}",
         "tooltip": false,
-        "interval": 1
+        "interval": 10
     },
     "custom/cursor_autohide":{
         "exec": "~/.config/sway/scripts/cursor-autohide.sh is-enabled",
-        "on-click": "~/.config/sway/scripts/cursor-autohide.sh toggle 3000",
+        "on-click": "~/.config/sway/scripts/cursor-autohide.sh toggle",
         "format": " {} ",
         "tooltip": false,
         "interval": 1
