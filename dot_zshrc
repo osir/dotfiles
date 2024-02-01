@@ -32,6 +32,9 @@ alias    r='source ranger'
 alias    l='\ls -lh  --color=auto --group-directories-first'
 alias   ll='\ls -lAh --color=auto --group-directories-first'
 alias sudi='sudo -i'
+alias nmup='nmcli connection up'
+alias nmdn='nmcli connection down'
+alias   pp='pentaproject'
 
 # TODO: Default programs
 export  BROWSER='/usr/bin/qutebrowser'
