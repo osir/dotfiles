@@ -1,7 +1,11 @@
 # ==============================================================================
 # ZSH SETTINGS
 # ==============================================================================
+
 #bindkey -v
+bindkey '\e[H'  beginning-of-line # Home
+bindkey '\e[F'  end-of-line # End
+bindkey '\e[3~' delete-char # Del
 
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -11,7 +15,7 @@ export ENABLE_CORRECTION="true"
 export COMPLETION_WAITING_DOTS="true"
 export HIST_STAMPS="yyyy-mm-dd"
 
-zstyle :compinstall filename '/home/os/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit promptinit
 compinit
@@ -34,7 +38,6 @@ alias   ll='\ls -lAh --color=auto --group-directories-first'
 alias sudi='sudo -i'
 alias nmup='nmcli connection up'
 alias nmdn='nmcli connection down'
-alias   pp='pentaproject'
 
 # TODO: Default programs
 export  BROWSER='/usr/bin/qutebrowser'
@@ -50,6 +53,7 @@ typeset -U path PATH
 path=(~/bin ~/.local/bin $path)
 export PATH
 
+source ~/.zshrc.work
 
 # ==============================================================================
 # FUNCTIONS
