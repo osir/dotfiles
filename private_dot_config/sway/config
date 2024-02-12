@@ -36,7 +36,7 @@ set $cyan2  #8ec07c
 # ==============================================================================
 
 floating_modifier       $mod normal # LMB = dragging, RMB = resizing
-focus_follows_mouse     no
+focus_follows_mouse     yes
 default_border          pixel 1
 default_floating_border pixel 1
 hide_edge_borders       smart
@@ -82,13 +82,13 @@ for_window [app_id="filepicker"] {
 }
 
 # Assign specifig windows to Workspaces
-assign [class="^VirtualBox Manager$"] VB
-assign [class="^VirtualBox Machine$"] VB
-assign [app_id="org.keepasscx.KeePassXC"] PW
-assign [class="Pidgin"] COM
-assign [app_id="info.mumble.Mumble"] COM
-assign [class="thunderbird"] Mail
-assign [app_id="at.yrlf.wl_mirror"] Mirror
+assign [class="^VirtualBox Manager$"]     VB
+assign [class="^VirtualBox Machine$"]     VB
+assign [app_id="^org.keepassxc.KeePassXC$"] PW
+assign [class="Pidgin"]                   COM
+assign [app_id="info.mumble.Mumble"]      COM
+assign [class="thunderbird"]              Mail
+assign [app_id="at.yrlf.wl_mirror"]       Mirror
 set $customws 'VB,PW,COM,Mail,Mirror'
 
 # ==============================================================================
@@ -113,6 +113,7 @@ bindsym $mod+x            exec loginctl lock-session
 # Programs
 bindsym $mod+d            exec $term
 bindsym $mod+Shift+d      exec $browser
+bindsym $mod+Shift+Alt+d      exec $browser -ProfileManager
 bindsym $mod+Space        exec rofi -terminal $term -show drun
 bindsym $mod+Shift+Space  exec rofi -terminal $term -show run
 
@@ -201,7 +202,7 @@ bindsym $mod+Shift+0      move container to workspace $wspace10
 
 set $scr_dir $( cat ~/.screenshot-dir )
 set $gs grimshot --notify
-set $dt $(date +%Y-%m-%dT%H:%M:%S)
+set $dt $(date +%Y-%m-%dT%H%M%S)
 set $mode_scr Screenshot ❶Area ❷Window ❸Screen ❹All ↹Dir
 mode "$mode_scr" {
     bindsym 1 exec '$gs copy area',   mode "default"
