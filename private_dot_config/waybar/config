@@ -13,7 +13,8 @@
         "sway/window"
     ],
     "modules-center": [
-        "clock#clock_time",
+        //"clock#clock_time",
+        "clock#combined",
     ],
     "modules-right": [
         "custom/chezmoi_status",
@@ -29,7 +30,7 @@
         "keyboard-state",
         //"sway/language",
         "battery",
-        "clock#clock_date",
+        //"clock#clock_date",
         "tray"
     ],
     // Modules configuration
@@ -51,8 +52,8 @@
     },
     "custom/chezmoi_status":{
         "exec": "[ $( ~/bin/chezmoi diff | wc -l ) -gt 0 ] && printf ''",
-        "on-click": "~/bin/chezmoi apply",
-        "on-click-right": "~/bin/chezmoi apply && swaymsg reload",
+        "on-click": "~/bin/chezmoi apply && notify-send -u low 'Applied config'",
+        "on-click-right": "~/bin/chezmoi apply && swaymsg reload && notify-send -u low 'Applied config'",
         "format": "{}",
         "tooltip": false,
         "interval": 10
@@ -90,7 +91,14 @@
     },
     "clock#clock_date": {
         "interval": 10,
-        "format": "{:%W  %a  %Y-%m-%d}",
+        "format": "{:%W  %a  %Y-%m-%d} ",
+        "locale": "en_US",
+        "timezone": "Europe/Zurich",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "clock#combined": {
+        "interval": 1,
+        "format": "{:%a | %W | %Y-%m-%d | %H:%M:%S}",
         "locale": "en_US",
         "timezone": "Europe/Zurich",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
