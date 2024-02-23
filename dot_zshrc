@@ -53,7 +53,7 @@ typeset -U path PATH
 path=(~/bin ~/.local/bin $path)
 export PATH
 
-source ~/.zshrc.work
+[ -f ~/.zshrc.work ] && source ~/.zshrc.work
 
 # ==============================================================================
 # FUNCTIONS
