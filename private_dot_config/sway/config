@@ -7,7 +7,6 @@ set $browser  firefox
 set $mod      Mod4
 
 # Screen timeout variables read by /usr/share/sway/config.d/90-swayidle.conf
-# TODO sike doesn't work gottem
 set $lock_timeout   900
 set $screen_timeout 45
 
