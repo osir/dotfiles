@@ -33,11 +33,12 @@ zstyle ':completion::complete:*' gain-privileges 1
 alias    v='nvim'
 alias   se='sudoedit'
 alias    r='source ranger'
+alias   ra='ranger'
 alias    l='\ls -lh  --color=auto --group-directories-first'
 alias   ll='\ls -lAh --color=auto --group-directories-first'
 alias sudi='sudo -i'
-alias nmup='nmcli connection up'
-alias nmdn='nmcli connection down'
+alias nmup='nmcli --ask --colors yes connection up'
+alias nmdn='nmcli       --colors yes connection down'
 
 # TODO: Default programs
 export  BROWSER='/usr/bin/qutebrowser'
