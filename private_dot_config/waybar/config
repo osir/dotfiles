@@ -3,7 +3,7 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     // "height": 10, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 0, // Gaps between modules (4px)
+    "spacing": 0, // Gaps between modules
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
@@ -13,8 +13,7 @@
         "sway/window"
     ],
     "modules-center": [
-        //"clock#clock_time",
-        "clock#combined",
+        "clock#clock_time",
     ],
     "modules-right": [
         "custom/chezmoi_status",
@@ -30,7 +29,7 @@
         "keyboard-state",
         //"sway/language",
         "battery",
-        //"clock#clock_date",
+        "clock#clock_date",
         "tray"
     ],
     // Modules configuration
@@ -86,19 +85,12 @@
     },
     "clock#clock_time": {
         "interval": 1,
-        "format": "{:%H:%M:%S}",
+        "format": "<b>{:%H:%M:%S}</b>",
         "timezone": "Europe/Zurich"
     },
     "clock#clock_date": {
         "interval": 10,
-        "format": "{:%W  %a  %Y-%m-%d} ",
-        "locale": "en_US",
-        "timezone": "Europe/Zurich",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "clock#combined": {
-        "interval": 1,
-        "format": "{:%a | %W | %Y-%m-%d | %H:%M:%S}",
+        "format": "{:<b>%Y-%m-%d</b>  %W %a}",
         "locale": "en_US",
         "timezone": "Europe/Zurich",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
