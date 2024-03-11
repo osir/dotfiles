@@ -2,6 +2,18 @@
 # ZSH SETTINGS
 # ==============================================================================
 
+typeset -U path PATH
+path=(~/bin ~/.local/bin $path)
+export PATH
+fpath=( "$HOME/.config/zsh" $fpath )
+
+autoload -Uz compinit promptinit
+compinit
+_comp_options+=(globdots)
+zstyle :compinstall filename "$HOME/.zshrc"
+promptinit
+prompt purity
+
 #bindkey -v
 bindkey '\e[H'  beginning-of-line # Home
 bindkey '\e[F'  end-of-line # End
@@ -17,15 +29,6 @@ export HYPHEN_INSENSITIVE="true"
 export ENABLE_CORRECTION="true"
 export COMPLETION_WAITING_DOTS="true"
 
-zstyle :compinstall filename "$HOME/.zshrc"
-
-autoload -Uz compinit promptinit
-
-compinit
-_comp_options+=(globdots)
-
-promptinit
-prompt clint
 
 # Enable arrow keys for completion
 zstyle ':completion:*' menu select
@@ -53,11 +56,6 @@ export    PAGER='less'
 export     LANG='en_US.UTF-8'
 
 # TODO: XDG variables
-
-# PATH Variable
-typeset -U path PATH
-path=(~/bin ~/.local/bin $path)
-export PATH
 
 [ -f ~/.zshrc.work ] && source ~/.zshrc.work
 
