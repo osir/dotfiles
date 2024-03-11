@@ -7,18 +7,23 @@ bindkey '\e[H'  beginning-of-line # Home
 bindkey '\e[F'  end-of-line # End
 bindkey '\e[3~' delete-char # Del
 
-HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=30000
+export HISTFILE=~/.histfile
+export HISTSIZE=10000
+export SAVEHIST=50000
+export HIST_STAMPS="yyyy-mm-dd"
+setopt HIST_SAVE_NO_DUPS
+
 export HYPHEN_INSENSITIVE="true"
 export ENABLE_CORRECTION="true"
 export COMPLETION_WAITING_DOTS="true"
-export HIST_STAMPS="yyyy-mm-dd"
 
 zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit promptinit
+
 compinit
+_comp_options+=(globdots)
+
 promptinit
 prompt clint
 
