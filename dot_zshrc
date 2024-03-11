@@ -8,11 +8,19 @@ export PATH
 fpath=( "$HOME/.config/zsh" $fpath )
 
 autoload -Uz compinit promptinit
+
 compinit
 _comp_options+=(globdots)
 zstyle :compinstall filename "$HOME/.zshrc"
+
 promptinit
+PURITY_CMD_MAX_EXEC_TIME=15
 prompt purity
+
+# Enable arrow keys for completion
+zstyle ':completion:*' menu select
+# Enable completion on privileged command lines (containing sudo)
+zstyle ':completion::complete:*' gain-privileges 1
 
 #bindkey -v
 bindkey '\e[H'  beginning-of-line # Home
@@ -29,15 +37,18 @@ export HYPHEN_INSENSITIVE="true"
 export ENABLE_CORRECTION="true"
 export COMPLETION_WAITING_DOTS="true"
 
-
-# Enable arrow keys for completion
-zstyle ':completion:*' menu select
-# Enable completion on privileged command lines (containing sudo)
-zstyle ':completion::complete:*' gain-privileges 1
+setopt AUTO_PUSHD           # Push the current directory visited on the stack.
+setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
+setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
 
 # ==============================================================================
 # ALIASES
 # ==============================================================================
+
+# directory history
+alias d='dirs -v'
+for index ({1..99}) alias "$index"="cd +${index}"; unset index
+
 alias    v='nvim'
 alias   se='sudoedit'
 alias    r='source ranger'
