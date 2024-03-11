@@ -16,7 +16,6 @@
         "clock#clock_time",
     ],
     "modules-right": [
-        "custom/chezmoi_status",
         "custom/cursor_autohide",
         "custom/message_inhibitor",
         "idle_inhibitor",
@@ -48,14 +47,6 @@
         "format-icons": ["", ""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
-    },
-    "custom/chezmoi_status":{
-        "exec": "[ $( ~/bin/chezmoi diff | wc -l ) -gt 0 ] && printf ''",
-        "on-click": "~/bin/chezmoi apply && notify-send -u low 'Applied config'",
-        "on-click-right": "~/bin/chezmoi apply && swaymsg reload && notify-send -u low 'Applied config'",
-        "format": "{}",
-        "tooltip": false,
-        "interval": 10
     },
     "custom/cursor_autohide":{
         "exec": "~/.config/sway/scripts/cursor-autohide.sh is-enabled",
