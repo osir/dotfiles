@@ -72,6 +72,14 @@ for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The
     sticky enable
 }
 
+for_window [app_id="topterm"] {
+    floating enable
+}
+
+for_window [app_id="pyterm"] {
+    floating enable
+}
+
 for_window [app_id="at.yrlf.wl_mirror"] {
     fullscreen enable
 }
@@ -111,8 +119,12 @@ bindsym $mod+x            exec loginctl lock-session
 
 # Programs
 bindsym $mod+d            exec $term
+bindsym $mod+Shift+p      exec $term --class pyterm  -1 -o 'background_opacity 0.8' -d /tmp python3
+bindsym $mod+t            exec $term --class topterm -1 -o 'background_opacity 0.8' btop
+bindsym $mod+Shift+t      exec $term -d /tmp
+
 bindsym $mod+Shift+d      exec $browser
-bindsym $mod+Shift+Alt+d      exec $browser -ProfileManager
+bindsym $mod+Shift+Alt+d  exec $browser -ProfileManager
 bindsym $mod+Space        exec rofi -terminal $term -show drun
 bindsym $mod+Shift+Space  exec rofi -terminal $term -show run
 
@@ -217,8 +229,7 @@ mode "$mode_scr" {
     bindsym Tab mode "default", exec $term --class filepicker ranger --choosedir=.screenshot-dir --show-only-dirs "$( cat .screenshot-dir )"
     bindsym Escape mode "default"
 }
-bindsym $mod+p       mode "$mode_scr"
-bindsym $mod+Shift+p exec '$gs save screen ~/screenshots/$dt-area.png', mode "default"
+bindsym $mod+P mode "$mode_scr"
 
 # ==============================================================================
 # INPUT / OUTPUT
