@@ -1,5 +1,9 @@
 {
     "telemetry.telemetryLevel": "off",
     "window.menuBarVisibility": "toggle",
-    "workbench.colorTheme": "★★★★★ GRUVBOX ★★"
+    "workbench.colorTheme": "★★★★★ GRUVBOX ★★",
+    "workbench.startupEditor": "none",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false
 }
+
