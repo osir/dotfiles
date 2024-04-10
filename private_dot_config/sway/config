@@ -147,6 +147,7 @@ bindsym $mod+q            layout toggle split
 bindsym $mod+w            layout tabbed
 bindsym $mod+e            layout stacking
 bindsym $mod+a            focus parent
+bindsym $mod+Shift+a      focus child
 
 # Window resizing
 bindsym $mod+Left         resize shrink width  1 px or 1 ppt
@@ -184,6 +185,8 @@ bindsym $mod+Shift+s      exec "~/.config/sway/scripts/wschange.sh move   $custo
 # Prior / Next = PgUp / PgDn
 bindsym $mod+Prior        workspace prev_on_output
 bindsym $mod+Next         workspace next_on_output
+bindsym $mod+Shift+Prior  move container to workspace prev_on_output
+bindsym $mod+Shift+Next   move container to workspace next_on_output
 
 bindsym $mod+1            workspace $wspace1
 bindsym $mod+2            workspace $wspace2
@@ -221,10 +224,10 @@ mode "$mode_scr" {
     bindsym 3 exec '$gs copy output', mode "default"
     bindsym 4 exec '$gs copy screen', mode "default"
 
-    bindsym q exec '$gs save area   $scr_dir/$dt-area.png', mode "default"
-    bindsym w exec '$gs save active $scr_dir/$dt-win.png',  mode "default"
-    bindsym e exec '$gs save output $scr_dir/$dt-scr.png',  mode "default"
-    bindsym r exec '$gs save screen $scr_dir/$dt-all.png',  mode "default"
+    bindsym Shift+1 exec '$gs save area   $scr_dir/$dt-area.png', mode "default"
+    bindsym Shift+2 exec '$gs save active $scr_dir/$dt-win.png',  mode "default"
+    bindsym Shift+3 exec '$gs save output $scr_dir/$dt-scr.png',  mode "default"
+    bindsym Shift+4 exec '$gs save screen $scr_dir/$dt-all.png',  mode "default"
 
     bindsym Tab mode "default", exec $term --class filepicker ranger --choosedir=.screenshot-dir --show-only-dirs "$( cat .screenshot-dir )"
     bindsym Escape mode "default"
@@ -237,10 +240,10 @@ bindsym $mod+P mode "$mode_scr"
 
 input * {
     xkb_layout "us"
-    xkb_options "ctrl:nocaps,compose:prsc"
+    xkb_options "ctrl:nocaps,compose:ralt"
     xkb_numlock enabled
     repeat_delay 300
-    repeat_rate 50
+    repeat_rate 60
 }
 
 output *     bg ~/Pictures/wallpaper.png fill
