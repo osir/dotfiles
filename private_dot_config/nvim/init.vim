@@ -163,6 +163,7 @@ nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F4> :GitGutterBufferToggle<CR>
 nnoremap <F5> :set wrap!<CR>
 nnoremap <F6> :TagbarToggle<CR>
+nnoremap <F9> :!%:p<CR>  " execute the current file
 
 " Use <C-L> to reset hlsearch highlighting
 if maparg('<C-L>', 'n') ==# ''
