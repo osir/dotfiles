@@ -119,7 +119,7 @@ bindsym $mod+x            exec loginctl lock-session
 
 # Programs
 bindsym $mod+d            exec $term
-bindsym $mod+Shift+p      exec $term --class pyterm  -1 -o 'background_opacity 0.8' -d /tmp python3
+bindsym $mod+p            exec $term --class pyterm  -1 -o 'background_opacity 0.8' -d /tmp python3
 bindsym $mod+t            exec $term --class topterm -1 -o 'background_opacity 0.8' btop
 bindsym $mod+Shift+t      exec $term -d /tmp
 
@@ -232,7 +232,12 @@ mode "$mode_scr" {
     bindsym Tab mode "default", exec $term --class filepicker ranger --choosedir=.screenshot-dir --show-only-dirs "$( cat .screenshot-dir )"
     bindsym Escape mode "default"
 }
-bindsym $mod+P mode "$mode_scr"
+
+# Enter screenshot menu mode
+bindsym $mod+Print mode "$mode_scr"
+
+# Quick screenshot with just Print
+bindsym Print exec '$gs save output ~/Pictures/screenshots/$dt-scr.png'
 
 # ==============================================================================
 # INPUT / OUTPUT
