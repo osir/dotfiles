@@ -1,7 +1,7 @@
 #!/bin/sh
 
 F='/tmp/cursor-autohide'
-TIMEOUT_MS=1000
+TIMEOUT_MS=7000
 
 is_enabled() {
     grep -qs 'true' "$F"
