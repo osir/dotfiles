@@ -122,6 +122,7 @@ bindsym $mod+d            exec $term
 bindsym $mod+p            exec $term --class pyterm  -1 -o 'background_opacity 0.8' -d /tmp python3
 bindsym $mod+t            exec $term --class topterm -1 -o 'background_opacity 0.8' btop
 bindsym $mod+Shift+t      exec $term -d /tmp
+bindsym $mod+F1           exec "~/bin/man-menu/man-menu.sh"
 
 bindsym $mod+Shift+d      exec $browser
 bindsym $mod+Shift+Alt+d  exec $browser -ProfileManager
