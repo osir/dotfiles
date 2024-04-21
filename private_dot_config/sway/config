@@ -230,6 +230,7 @@ mode "$mode_scr" {
     bindsym Shift+4 exec '$gs save screen $scr_dir/$dt-all.png',  mode "default"
 
     bindsym Tab mode "default", exec $term --class filepicker ranger --choosedir=.screenshot-dir --show-only-dirs "$( cat .screenshot-dir )"
+    bindsym Shift+Tab mode "default", exec $term -d "$( cat .screenshot-dir )"
     bindsym Escape mode "default"
 }
 
