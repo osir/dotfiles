@@ -10,6 +10,10 @@ chosen=$(
         | sort \
         | rofi -dmenu -p man -i -l 20
 )
+
 [ "$chosen" != '' ] || exit 0
-kitty -d /tmp man $chosen
+   page="$( cut -d' ' -f 2 <<< "$chosen" )"
+section="$( cut -d' ' -f 1 <<< "$chosen" )"
+
+kitty --title "❓ man $page($section)" 'man' "$section" "$page"
 
