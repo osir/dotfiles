@@ -22,7 +22,7 @@ do
     else
         lines+=( "$name; $path" )
     fi
-done < ./dirs.csv
+done < ~/bin/dir-menu/dirs.csv
 
 chosen=$(
     printf '%s\n' "${lines[@]}" \

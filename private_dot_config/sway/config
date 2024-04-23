@@ -119,6 +119,7 @@ bindsym $mod+x            exec loginctl lock-session
 
 # Programs
 bindsym $mod+d            exec $term
+bindsym $mod+Alt+d        exec "~/bin/dir-menu/dir-menu.sh"
 bindsym $mod+p            exec $term --class pyterm  -1 -o 'background_opacity 0.8' -d /tmp python3
 bindsym $mod+t            exec $term --class topterm -1 -o 'background_opacity 0.8' btop
 bindsym $mod+Shift+t      exec $term -d /tmp
