@@ -1,0 +1,9 @@
+# Format = <name>;<path>
+# Paths must not end with a /
+# If a name is * all subdirectories will be included instead
+Downloads;~/Downloads/firefox
+Pictures;~/Pictures
+VM;~/vm
+Temp Share;~/5/share/temp
+*;~/5/projects
+
