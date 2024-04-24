@@ -101,10 +101,11 @@ alias nmup='nmcli --ask --colors yes connection up'
 alias nmdn='nmcli       --colors yes connection down'
 
 # TODO: Default programs
-export  BROWSER='/usr/bin/qutebrowser'
-export   VISUAL='/usr/bin/nvim'
-export   EDITOR='/usr/bin/nvim'
+export  BROWSER='qutebrowser'
+export   VISUAL='nvim'
+export   EDITOR='nvim'
 export    PAGER='less'
+export     LESS='-RNSi --mouse'
 export     LANG='en_US.UTF-8'
 
 # TODO: XDG variables
