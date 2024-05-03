@@ -4,7 +4,7 @@ chosen=$(grep -h -v '^#' ~/bin/unicode-menu/{favorites,emoji}.csv | rofi -dmenu 
 
 [ "$chosen" != '' ] || exit 0
 
-c=$(echo "$chosen" | sed 's/ .*$//')
+c=$( sed 's/ .*$//' <<< "$chosen" )
 printf "$c" | wl-copy --primary
 printf "$c" | wl-copy
 notify-send \
