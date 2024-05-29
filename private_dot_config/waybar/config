@@ -8,7 +8,7 @@
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
-        "sway/scratchpad",
+        //"sway/scratchpad",
         "custom/media",
         "sway/window"
     ],
@@ -78,6 +78,9 @@
         "interval": 1,
         "format": "<b>{:%H:%M:%S}</b>",
         "timezone": "Europe/Zurich"
+        // WIP TODO
+        //"on-click": "date '+%Y-%m-%d' | wl-copy -n; notify-send --urgency low aa",
+        //"on-click-right": "date '+%Y-%m-%dT%H-%M-%S' | wl-copy -n"
     },
     "clock#clock_date": {
         "interval": 10,

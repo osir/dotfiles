@@ -119,14 +119,14 @@ bindsym $mod+x            exec loginctl lock-session
 
 # Programs
 bindsym $mod+d            exec $term
-bindsym $mod+Alt+d        exec "~/bin/dir-menu/dir-menu.sh"
+bindsym $mod+Shift+d        exec "~/bin/dir-menu/dir-menu.sh"
 bindsym $mod+p            exec $term --class pyterm  -1 -o 'background_opacity 0.8' -d /tmp python3
 bindsym $mod+t            exec $term --class topterm -1 -o 'background_opacity 0.8' btop
 bindsym $mod+Shift+t      exec $term -d /tmp
 bindsym $mod+F1           exec "~/bin/man-menu/man-menu.sh"
 
-bindsym $mod+Shift+d      exec $browser
-bindsym $mod+Shift+Alt+d  exec $browser -ProfileManager
+bindsym $mod+s            exec $browser
+bindsym $mod+Shift+s      exec $browser -ProfileManager
 bindsym $mod+Space        exec rofi -terminal $term -show drun
 bindsym $mod+Shift+Space  exec rofi -terminal $term -show run
 
@@ -173,16 +173,16 @@ bindsym $mod+Shift+j      move down
 bindsym $mod+Shift+k      move up
 bindsym $mod+Shift+l      move right
 
-# Screen mirror and zoom
-bindsym $mod+z            exec 'wl-mirror --show-cursor --region "$(slurp)"', workspace Mirror, move workspace Mirror to output right;
-bindsym $mod+Shift+z      exec 'wl-mirror --show-cursor eDP-1', workspace Mirror, move workspace Mirror to output right;
+# Screen mirror and zoom TODO
+#bindsym $mod+z            exec 'wl-mirror --show-cursor --region "$(slurp)"', workspace Mirror, move workspace Mirror to output right;
+#bindsym $mod+Shift+z      exec 'wl-mirror --show-cursor eDP-1', workspace Mirror, move workspace Mirror to output right;
 
 # Workspaces
 bindsym $mod+Home         move workspace to output left
 bindsym $mod+End          move workspace to output right
 
-bindsym $mod+s            exec "~/.config/sway/scripts/wschange.sh switch $customws"
-bindsym $mod+Shift+s      exec "~/.config/sway/scripts/wschange.sh move   $customws"
+bindsym $mod+z            exec "~/.config/sway/scripts/wschange.sh switch $customws"
+bindsym $mod+Shift+z      exec "~/.config/sway/scripts/wschange.sh move   $customws"
 
 # Prior / Next = PgUp / PgDn
 bindsym $mod+Prior        workspace prev_on_output
