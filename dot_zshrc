@@ -7,6 +7,7 @@ path=(~/bin ~/.local/bin $path)
 export PATH
 fpath=( "$HOME/.config/zsh" $fpath )
 
+[ -f ~/.zshrc.work ] && source ~/.zshrc.work
 
 # Completions
 autoload -Uz compinit
@@ -99,6 +100,7 @@ alias   ll='\ls -lAh --color=auto --group-directories-first'
 alias sudi='sudo -i'
 alias nmup='nmcli --ask --colors yes connection up'
 alias nmdn='nmcli       --colors yes connection down'
+alias imount='umount ~/imnt; idevicepair pair && ifuse ~/imnt'
 
 # TODO: Default programs
 export  BROWSER='qutebrowser'
@@ -109,8 +111,6 @@ export     LESS='-RNSi --mouse'
 export     LANG='en_US.UTF-8'
 
 # TODO: XDG variables
-
-[ -f ~/.zshrc.work ] && source ~/.zshrc.work
 
 # ==============================================================================
 # FUNCTIONS
