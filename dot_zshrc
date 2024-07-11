@@ -97,6 +97,7 @@ alias    r='source ranger'
 alias   ra='ranger'
 alias    l='\ls -lh  --color=auto --group-directories-first'
 alias   ll='\ls -lAh --color=auto --group-directories-first'
+alias  ipa='ip --brief --color address'
 alias sudi='sudo -i'
 alias nmup='nmcli --ask --colors yes connection up'
 alias nmdn='nmcli       --colors yes connection down'
@@ -111,6 +112,8 @@ export     LESS='-RNSi --mouse'
 export     LANG='en_US.UTF-8'
 
 # TODO: XDG variables
+
+export GOPATH="$HOME/go"
 
 # ==============================================================================
 # FUNCTIONS

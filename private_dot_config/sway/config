@@ -131,6 +131,7 @@ bindsym $mod+Space        exec rofi -terminal $term -show drun
 bindsym $mod+Shift+Space  exec rofi -terminal $term -show run
 
 bindsym $mod+Period       exec "~/bin/unicode-menu/unicode-menu.sh"
+bindsym $mod+Comma        exec "~/bin/date-menu/date-menu.sh"
 
 # Notifications
 bindsym $mod+Backspace    exec "dunstctl close"
@@ -142,6 +143,7 @@ bindsym $mod+b            split h
 bindsym $mod+v            split v
 bindsym $mod+Return       focus mode_toggle # Focus last floating
 bindsym $mod+Shift+Return floating toggle
+bindsym $mod+Shift+Alt+Return sticky toggle
 
 # Layout
 bindsym $mod+f            fullscreen toggle

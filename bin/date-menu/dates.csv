@@ -1,0 +1,14 @@
+# Format = <name>;<cmd>
+
+ISO date;     date '+%Y-%m-%d'
+ISO datetime; date '+%Y-%m-%d %H:%M:%S'
+Euro;         date '+%d.%m.%Y'
+Full;         date
+American;     date '+%D'
+
+Weekday;      date '+%A'
+KW;           date '+%U'
+
+# UTC
+UTC ISO;      date --utc '+%Y-%m-%d %H:%M:%S'
+
