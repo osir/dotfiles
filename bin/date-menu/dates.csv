@@ -7,7 +7,7 @@ Full;         date
 American;     date '+%D'
 
 Weekday;      date '+%A'
-KW;           date '+%U'
+KW;           date '+%V'
 
 # UTC
 UTC ISO;      date --utc '+%Y-%m-%d %H:%M:%S'
