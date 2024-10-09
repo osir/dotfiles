@@ -117,8 +117,8 @@
 
 #workspaces button {
     color: #ebdbb2; /* FG */
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 5;
+    padding-right: 5;
 }
 
 #workspaces button.focused {
@@ -135,7 +135,6 @@
  * Keyframes
  * -------------------------------------------------------------------------- */
 
-/* TODO */
 @keyframes blink-warning {
     70% {
         color: white;
