@@ -270,9 +270,9 @@ output eDP-1 scale 1
 # Sleep required to make sure the tray is ready
 exec sleep 3 && flameshot
 
-exec_always gsettings set org.gnome.desktop.interface gtk-theme    Gruvbox-Dark-BL
-exec_always gsettings set org.gnome.desktop.interface icon-theme   Papirus-Dark
-exec_always gsettings set org.gnome.desktop.interface cursor-theme Adwaita
+exec_always gsettings set org.gnome.desktop.interface gtk-theme    gruvbox-dark
+exec_always gsettings set org.gnome.desktop.interface icon-theme   gruvbox-dark
+exec_always gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
 
 # ==============================================================================
 # INCLUDES
