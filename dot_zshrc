@@ -94,8 +94,8 @@ for index ({1..39}) alias "$index"="cd +${index}"; unset index
 
 alias    v='nvim'
 alias   se='sudoedit'
-alias    r='source ranger'
-alias   ra='ranger'
+alias    r='TERM=xterm-kitty source ranger'
+alias   ra='TERM=xterm-kitty ranger'
 alias    l='\ls -lh  --color=auto --group-directories-first'
 alias   ll='\ls -lAh --color=auto --group-directories-first'
 alias  ipa='ip --brief --color address'
