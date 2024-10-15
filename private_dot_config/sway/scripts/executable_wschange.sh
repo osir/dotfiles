@@ -8,11 +8,20 @@ action="${1:-switch}"
 arg_workspaces=$(echo "${2:-}" | tr ',' '\n')
 
 # Get currently open workspaces (except 1-10)
-open_workspaces=$(swaymsg -t get_workspaces | jq '.[].name' | grep -Pv '^"[0-9]+:' | tr -d \")
+open_workspaces=$( \
+    swaymsg -t get_workspaces \
+        | jq '.[].name' \
+        | grep -Pv '^"[0-9]+:' \
+        | tr -d \"\
+)
 
 # Combine open and argument supplied workspaces and remove duplicates
-workspaces=$(echo -e "$open_workspaces\n$arg_workspaces" | paste -d '\n' - - | awk '!seen[$0]++')
-choice="$(echo "$workspaces" | rofi -dmenu -p switch -i)"
+workspaces=$( \
+    echo -e "$open_workspaces\n$arg_workspaces" \
+        | paste -d '\n' - - \
+        | awk '!seen[$0]++'\
+)
+choice="$(echo "$workspaces" | rofi -dmenu -p "$action" -i)"
 
 case "$action" in
     'switch')

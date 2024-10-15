@@ -1,6 +1,4 @@
-# ==============================================================================
-# VARIABLES
-# ==============================================================================
+# VARIABLES {{{
 
 set $term     kitty
 set $browser  firefox
@@ -23,34 +21,36 @@ set $wspace9  "9:九"
 set $wspace10 "10:十"
 
 # Colors
-set $bg     #282828
-set $fg     #ebdbb2
-set $green1 #98971a
-set $green2 #b8bb26
-set $red1   #cc241d
-set $cyan2  #8ec07c
+set $bg      #282828
+set $fg      #ebdbb2
+set $green1  #98971a
+set $green1d #73730D
+set $red1    #cc241d
+set $cyan2   #8ec07c
 
-# ==============================================================================
-# OTHER SETTINGS
-# ==============================================================================
+# }}}
+
+# OTHER SETTINGS {{{
 
 floating_modifier       $mod normal # LMB = dragging, RMB = resizing
 focus_follows_mouse     yes
-default_border          pixel 1
+default_border          pixel 2
 default_floating_border pixel 1
+gaps inner 5
+gaps outer 0
 hide_edge_borders       smart
 font                    pango:Cantarell 12px
 
 # class                 border   backgr.  text     indicator  child_border
-client.focused          $green1  $green1  $bg      $green2    $green1
-client.unfocused        $bg      $bg      $green1  $bg        $bg
-client.focused_inactive $bg      $bg      $green2  $bg        $bg
-client.urgent           $red1    $bg      $red1    $bg        $bg
+client.focused          $green1  $green1  $bg      $fg        $green1
+client.unfocused        $green1d $green1d $bg      $green1d   $green1d
+client.focused_inactive $green1d $green1d $bg      $green1d   $green1d
+client.urgent           $red1    $bg      $red1    $red1      $red1
 client.background $cyan2
 
-# ==============================================================================
-# SPECIAL WINDOWS
-# ==============================================================================
+# }}}
+
+# SPECIAL WINDOWS {{{
 
 bindsym $mod+Shift+grave move scratchpad
 bindsym $mod+grave       scratchpad show
@@ -89,27 +89,28 @@ for_window [app_id="filepicker"] {
 }
 
 # Assign specifig windows to Workspaces
-assign [class="^VirtualBox Manager$"]     VB
-assign [class="^VirtualBox Machine$"]     VB
+assign [class="^VirtualBox Manager$"] VB
+assign [class="^VirtualBox Machine$"] VB
 assign [app_id="^org.keepassxc.KeePassXC$"] PW
-assign [class="Pidgin"]                   COM
-assign [app_id="info.mumble.Mumble"]      COM
-assign [class="thunderbird"]              Mail
-assign [app_id="at.yrlf.wl_mirror"]       Mirror
-set $customws 'VB,PW,COM,Mail,Mirror'
+assign [class="Pidgin"]              COM
+assign [app_id="org.gajim.Gajim"]    COM
+assign [app_id="info.mumble.Mumble"] COM
+assign [class="thunderbird"] Mail
 
-# ==============================================================================
-# BAR
-# ==============================================================================
+set $customws 'VB,PW,COM,Mail'
+
+# }}}
+
+# BAR {{{
 
 bar {
     position top
     swaybar_command waybar
 }
 
-# ==============================================================================
-# KEYS
-# ==============================================================================
+# }}}
+
+# KEYS {{{
 
 # Meta
 bindsym $mod+Shift+c      reload
@@ -216,9 +217,9 @@ bindsym $mod+Shift+8      move container to workspace $wspace8
 bindsym $mod+Shift+9      move container to workspace $wspace9
 bindsym $mod+Shift+0      move container to workspace $wspace10
 
-# ==============================================================================
-# SCREENSHOTS
-# ==============================================================================
+# }}}
+
+# SCREENSHOTS {{{
 
 set $scr_dir $( cat ~/.screenshot-dir )
 set $gs grimshot --notify
@@ -246,9 +247,9 @@ bindsym $mod+Print mode "$mode_scr"
 # Quick screenshot with just Print
 bindsym Print exec '$gs save output ~/Pictures/screenshots/$dt-scr.png'
 
-# ==============================================================================
-# INPUT / OUTPUT
-# ==============================================================================
+# }}}
+
+# INPUT / OUTPUT {{{
 
 input * {
     xkb_layout "us"
@@ -263,9 +264,9 @@ output eDP-1 scale 1
 
 #seat seat0 xcursor_theme Adwaita
 
-# ==============================================================================
-# AUTOSTART PROGRAMS
-# ==============================================================================
+# }}}
+
+# AUTOSTART PROGRAMS {{{
 
 # Sleep required to make sure the tray is ready
 exec sleep 3 && flameshot
@@ -274,9 +275,12 @@ exec_always gsettings set org.gnome.desktop.interface gtk-theme    gruvbox-dark
 exec_always gsettings set org.gnome.desktop.interface icon-theme   gruvbox-dark
 exec_always gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
 
-# ==============================================================================
-# INCLUDES
-# ==============================================================================
+# }}}
+
+# INCLUDES {{{
 
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
 
+# }}}
+
+# vim:fileencoding=utf-8:foldmethod=marker
