@@ -44,7 +44,7 @@ font                    pango:Cantarell 12px
 # class                 border   backgr.  text     indicator  child_border
 client.focused          $green1  $green1  $bg      $fg        $green1
 client.unfocused        $green1d $green1d $bg      $green1d   $green1d
-client.focused_inactive $green1d $green1d $bg      $green1d   $green1d
+client.focused_inactive $green1  $green1d $bg      $green1d   $green1d
 client.urgent           $red1    $bg      $red1    $red1      $red1
 client.background $cyan2
 
