@@ -25,29 +25,25 @@
 }
 
 /* left */
-#mode,
-#scratchpad,
-#media,
 #window,
 /* middle */
 #clock.clock_time,
 /* right */
+#custom-cursor_autohide,
+#custom-message_inhibitor,
 #idle_inhibitor,
+#backlight,
 #pulseaudio,
+#custom-media,
 #network,
 #cpu,
-#memory,
-#temperature,
-#backlight,
 #keyboard-state,
-#language,
 #battery,
 #clock.clock_date,
 #tray {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left:  8px;
+    padding-right: 8px;
 }
-
 
 /* -----------------------------------------------------------------------------
  * Module styles

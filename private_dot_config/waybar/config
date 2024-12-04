@@ -1,67 +1,87 @@
+
+// SETTINGS {{{
 {
-    // "layer": "top", // Waybar at top layer
+    // "layer": "top",       // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    // "height": 10, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 0, // Gaps between modules
-    // Choose the order of the modules
+    // "height": 10,         // Waybar height (to be removed for auto height)
+    // "width": 1280,        // Waybar width
+    "spacing": 0,            // Gaps between modules
+
+    // Order of the modules
+    // Don't forget to add them to the CSS to have correct padding
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
-        //"sway/scratchpad",
-        "custom/media",
         "sway/window"
     ],
     "modules-center": [
-        "clock#clock_time",
+        "clock#clock_time"
     ],
     "modules-right": [
         "custom/cursor_autohide",
         "custom/message_inhibitor",
         "idle_inhibitor",
+        "backlight",
         "pulseaudio",
+        "custom/media",
         "network",
         "cpu",
-        "memory",
-        "temperature",
-        "backlight",
         "keyboard-state",
-        //"sway/language",
         "battery",
         "clock#clock_date",
         "tray"
     ],
-    // Modules configuration
+// }}}
+
+    // LEFT
+    // WORKSPACES {{{
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": false,
         "warp-on-scroll": false,
         "format": "{name}",
     },
+    // }}}
+    // MODE {{{
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
+    // }}}
+    // WINDOW {{{
+    "sway/window": {
+        "format": "[ {title} ]"
     },
+    // }}}
+
+    // CENTER
+    // CLOCK TIME {{{
+    "clock#clock_time": {
+        "interval": 1,
+        "format": "<b>{:%H:%M:%S}</b>",
+        "timezone": "Europe/Zurich"
+    },
+    // }}}
+
+    // RIGHT
+    // CURSOR AUTOHIDE {{{
     "custom/cursor_autohide":{
         "exec": "~/.config/sway/scripts/cursor-autohide.sh is-enabled",
         "on-click": "~/.config/sway/scripts/cursor-autohide.sh toggle",
-        "format": " {} ",
+        "format": "{}",
         "tooltip": false,
         "interval": 1
     },
+    // }}}
+    // MESSAGE INHIBITOR {{{
     "custom/message_inhibitor":{
         "exec": "if dunstctl is-paused | grep -sq true - ; then printf ''; else printf ''; fi",
         "on-click": "dunstctl set-paused toggle",
-        "format": " {} ",
+        "format": "{}",
         "tooltip": false,
         "interval": 1
     },
+    // }}}
+    // IDLE INHIBITOR {{{
     "idle_inhibitor": {
         "on-click-right": "wlogout",
         "format": "{icon}",
@@ -70,66 +90,23 @@
             "deactivated": ""
         }
     },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
-    },
-    "clock#clock_time": {
-        "interval": 1,
-        "format": "<b>{:%H:%M:%S}</b>",
-        "timezone": "Europe/Zurich"
-        // WIP TODO
-        //"on-click": "date '+%Y-%m-%d' | wl-copy -n; notify-send --urgency low aa",
-        //"on-click-right": "date '+%Y-%m-%dT%H-%M-%S' | wl-copy -n"
-    },
+    // }}}
+    // CLOCK DATE {{{
     "clock#clock_date": {
         "interval": 10,
-        "format": "{:<b>%Y-%m-%d</b>  %W %a}",
+        "format": "{:%a <b>%Y-%m-%d</b>  KW %W}",
         "locale": "en_US",
         "timezone": "Europe/Zurich",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
-    "cpu": {
-        "format": " {usage}%",
-        "tooltip": false
-    },
-    "memory": {
-        "format": " {}%"
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
-    },
+    // }}}
+    // BACKLIGHT {{{
     "backlight": {
         // "device": "acpi_video1",
         "format": " {percent}%",
     },
-    "battery": {
-        "states": {
-            "warning": 19,
-            "critical": 6
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": "{icon} {capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{icon} {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " {essid} [{signalStrength}%]",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "DC",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
+    // }}}
+    // PULSEAUDIO {{{
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon} {volume}% {format_source}",
@@ -149,8 +126,10 @@
         },
         "on-click": "pavucontrol"
     },
+    // }}}
+    // MEDIA {{{
     "custom/media": {
-        "format": "{icon} {}",
+        "format": "{}",
         "return-type": "json",
         "max-length": 40,
         "format-icons": {
@@ -158,8 +137,50 @@
             "default": "🎜"
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources folder
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-double-click": "playerctl previous",
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    }
+    },
+    // }}}
+    // NETWORK {{{
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": " {essid} [{signalStrength}%]",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "DC",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    // }}}
+    // CPU {{{
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+    // }}}
+    // BATTERY {{{
+    "battery": {
+        "states": {
+            "warning": 19,
+            "critical": 6
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon} {capacity}% ",
+        "format-plugged": "{icon} {capacity}% ",
+        "format-alt": "{icon} {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    // }}}
+    // TRAY {{{
+    "tray": {
+        "spacing": 8
+    },
+    // }}}
 }
 
+# vim:fileencoding=utf-8:foldmethod=marker

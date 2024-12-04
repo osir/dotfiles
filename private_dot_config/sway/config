@@ -1,7 +1,7 @@
 # VARIABLES {{{
 
 set $term     kitty
-set $browser  firefox
+set $browser  zen-alpha
 set $mod      Mod4
 
 # Screen timeout variables read by /usr/share/sway/config.d/90-swayidle.conf
@@ -126,8 +126,8 @@ bindsym $mod+t            exec $term --class topterm -1 -o 'background_opacity 0
 bindsym $mod+Shift+t      exec $term -d /tmp
 bindsym $mod+F1           exec "~/bin/man-menu/man-menu.sh"
 
-bindsym $mod+s            exec $browser
-bindsym $mod+Shift+s      exec $browser -ProfileManager
+bindsym $mod+s            exec dex-autostart .local/share/applications/ZenBrowser.desktop
+#bindsym $mod+Shift+s      exec $browser -ProfileManager
 bindsym $mod+Space        exec rofi -terminal $term -show drun
 bindsym $mod+Shift+Space  exec rofi -terminal $term -show run
 
@@ -137,6 +137,12 @@ bindsym $mod+Comma        exec "~/bin/date-menu/date-menu.sh"
 # Notifications
 bindsym $mod+Backspace    exec "dunstctl close"
 bindsym $mod+Shift+Backspace exec "dunstctl history-pop"
+
+# Media keys
+bindsym --locked $mod+XF86AudioPlay        exec "playerctl next"
+bindsym --locked $mod+Shift+XF86AudioPlay  exec "playerctl previous"
+bindsym --locked $mod+XF86AudioRaiseVolume exec "brightnessctl s +10%"
+bindsym --locked $mod+XF86AudioLowerVolume exec "brightnessctl s 10%-"
 
 # Window manipulation
 bindsym $mod+Shift+q      kill
