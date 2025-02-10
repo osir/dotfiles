@@ -104,6 +104,9 @@ alias nmup='nmcli --ask --colors yes connection up'
 alias nmdn='nmcli       --colors yes connection down'
 alias imount='umount ~/imnt; idevicepair pair && ifuse ~/imnt'
 
+alias kbb='mkdocs build --config-file ~/kb/mkdocs.yml --strict --clean'
+alias kbs='mkdocs serve --config-file ~/kb/mkdocs.yml --open'
+
 # TODO: Default programs
 export  BROWSER='qutebrowser'
 export   VISUAL='nvim'
