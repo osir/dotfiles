@@ -37,6 +37,8 @@ endfunction
 
 call plug#begin(plugin_dir)
 
+Plug 'ellisonleao/gruvbox.nvim'
+
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-afterimage'
 Plug 'tpope/vim-characterize'
@@ -93,6 +95,7 @@ set laststatus=2
 set colorcolumn=81
 highlight ColorColumn ctermbg=5
 set background=dark
+colorscheme gruvbox
 set list
 if &encoding != 'utf-8'
     set listchars=tab:>\ ,trail:-,nbsp:+,precedes:<,extends:>
